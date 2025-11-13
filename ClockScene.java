@@ -105,7 +105,7 @@ public class ClockScene extends JPanel {
             stage = 1;
             inputLabel.setText("정답");
             
-            // ✨ [수정] 정답 시 키패드와 정답창 숨기기
+            //  정답 시 키패드와 정답창 숨기기
             hideKeypad();
 
         } else if (input.length() >= 4) {
@@ -120,7 +120,7 @@ public class ClockScene extends JPanel {
         bg.setIcon(clockImage);
         stage = 0;
         
-        // ✨ [수정] 초기화 시 키패드와 정답창 다시 보이게
+        // 초기화 시 키패드와 정답창 다시 보이게
         showKeypad();
     }
 
@@ -131,17 +131,17 @@ public class ClockScene extends JPanel {
         }
         zeroBtn.setVisible(false);
         clearBtn.setVisible(false);
-        inputLabel.setVisible(false); // ✨ [추가] 정답창 숨기기
+        inputLabel.setVisible(false); // 정답창 숨기기
     }
 
-    // 키패드와 입력창을 보이게 하는 헬퍼 메서드
+    // 키패드와 입력창을 보이게 하는 메서드
     private void showKeypad() {
         for (JButton btn : numButtons) {
             btn.setVisible(true);
         }
         zeroBtn.setVisible(true);
         clearBtn.setVisible(true);
-        inputLabel.setVisible(true); // ✨ [추가] 정답창 다시 보이기
+        inputLabel.setVisible(true); //  정답창 다시 보이기
     }
 
     // 이미지 클릭 전환
@@ -158,4 +158,5 @@ public class ClockScene extends JPanel {
             main.setHasKey(true); 
         }
     }
+
 }
