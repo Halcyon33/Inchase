@@ -70,11 +70,11 @@ public class InchaseMain extends JFrame {
     public void showScene(String name) {
         JPanel scene = switch (name) {
             case "door" -> doorScene == null ? doorScene = new DoorScene(this) : doorScene;
-            case "desk" -> { // ✨ [수정] 씬 전환 시 DeskScene의 상태 초기화
+            case "desk" -> { // 씬 전환 시 DeskScene의 상태 초기화
                 if (deskScene == null) {
                     deskScene = new DeskScene(this);
                 }
-                deskScene.resetToDeskView(); // ⬅️ DeskScene의 resetToDeskView() 호출
+                deskScene.resetToDeskView(); // DeskScene의 resetToDeskView() 호출
                 yield deskScene;
             }
             case "bookshelf" -> bookshelfScene == null ? bookshelfScene = new BookshelfScene(this) : bookshelfScene;
@@ -149,4 +149,5 @@ public class InchaseMain extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(InchaseMain::new);
     }
+
 }
