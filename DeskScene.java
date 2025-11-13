@@ -13,7 +13,7 @@ public class DeskScene extends JPanel {
     private String currentState = "desk";
     private boolean isCombining = false;
     private boolean isDrawerPuzzleSolved = false;
-    private boolean isPotionCombined = false; // 이 플래그로 최종 탈출을 제어합니다.
+    private boolean isPotionCombined = false;
     private boolean inSmellStage = false;
 
     // === 이미지 로드 ===
@@ -87,12 +87,12 @@ public class DeskScene extends JPanel {
         resetButton.setVisible(false);
         bgLabel.add(resetButton);
 
-        // 🖱️ 마우스 클릭 처리
+        // 마우스 클릭 처리
         bgLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 
-                // ✨ [핵심 수정] 합성이 완료된 상태라면, 어떤 클릭이든 메인으로 복귀 처리
+                //  합성이 완료된 상태라면, 어떤 클릭이든 메인으로 복귀 처리
                 if (isPotionCombined) { 
                     main.goBack();
                     return;
@@ -138,7 +138,7 @@ public class DeskScene extends JPanel {
         });
     }
 
-    /** 🔹 외부에서 호출하여 장면 상태를 기본 책상 화면으로 초기화합니다. */
+    //외부에서 호출하여 장면 상태를 기본 책상 화면으로 초기화합니다. 
     public void resetToDeskView() {
         if (bgLabel != null) {
             bgLabel.setIcon(deskImage);
@@ -154,11 +154,11 @@ public class DeskScene extends JPanel {
         inSmellStage = false; 
     }
     
-    /** 🔹 책상 클릭 처리 */
+    //책상 클릭 처리
     private void handleDeskClick(int x, int y) {
         if (isCombining) return;
 
-        // 📦 상자 클릭
+        // 상자 클릭
         if (x > 560 && x < 930 && y > 306 && y < 460) {
             if (main.hasKey()) { 
                 if (main.hasRedPotion()) {
@@ -176,7 +176,7 @@ public class DeskScene extends JPanel {
             return;
         }
 
-        // 🗄️ 서랍 클릭
+        //서랍 클릭
         if (x > 620 && x < 1260 && y > 500 && y < 640) {
             if (isDrawerPuzzleSolved) {
                 bgLabel.setIcon(drawerSolvedEmptyImage);
@@ -194,10 +194,10 @@ public class DeskScene extends JPanel {
         }
     }
 
-    /** 🔹 상자 내부 클릭 처리 (currentState == "box") */
+    //상자 내부 클릭 처리
     private void handleBoxClick(int x, int y) {
         
-        // 🧪 붉은 물약 클릭 (좌측 영역) - 물약을 아직 획득하지 않았을 때만 클릭 가능
+        //붉은 물약 클릭-물약을 아직 획득하지 않았을 때만 클릭 가능
         if (!main.hasRedPotion() && x > 550 && x < 750 && y > 420 && y < 630) {
             bgLabel.setIcon(redImage); 
             main.setHasRedPotion(true); 
@@ -205,7 +205,7 @@ public class DeskScene extends JPanel {
             return;
         }
 
-        // 📜 종이 클릭 (우측 영역)
+        // 종이 클릭
         if (x > 750 && x < 950 && y > 420 && y < 630) {
             bgLabel.setIcon(paperImage);
             currentState = "box_paper";
@@ -215,10 +215,10 @@ public class DeskScene extends JPanel {
         
     }
 
-    /** 🔹 붉은 물약 획득 후 상자 화면 클릭 처리 (currentState == "red_get") */
+    // 붉은 물약 획득 후 상자 화면 클릭 처리 (currentState == "red_get") 
     private void handleRedGetClick(int x, int y) {
         
-        // 📜 종이 클릭 (우측 영역)
+        //  종이 클릭 
         if (x > 750 && x < 950 && y > 420 && y < 630) {
             bgLabel.setIcon(paperImage);
             currentState = "box_paper";
@@ -226,13 +226,13 @@ public class DeskScene extends JPanel {
             return;
         }
         
-        // 종이가 아닌 다른 영역 클릭 시 (뒤로가기 동작)
+        // 종이가 아닌 다른 영역 클릭 시 
         bgLabel.setIcon(deskImage); 
         currentState = "desk"; 
         backBtn.setVisible(true); 
     }
     
-    // === 서랍 퍼즐 처리 ===
+    // 서랍 퍼즐 처리 
     private void handleDrawerClick(int x, int y) {
         boolean red = (x > 685 && x < 741 && y > 450 && y < 500);
         boolean green = (x > 751 && x < 790 && y > 450 && y < 500);
@@ -358,8 +358,8 @@ public class DeskScene extends JPanel {
 
         Timer t = new Timer(1500, e -> {
             bgLabel.setIcon(deskCombineImage);
-            isPotionCombined = true; // 플래그를 true로 설정합니다.
-            isCombining = false; // 마우스 리스너가 다시 활성화됩니다.
+            isPotionCombined = true; 
+            isCombining = false; 
 
             backBtn.setVisible(true);
             
@@ -383,4 +383,5 @@ public class DeskScene extends JPanel {
         btn.setBorderPainted(false);
         return btn;
     }
+
 }
