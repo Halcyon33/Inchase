@@ -7,26 +7,22 @@ import javadevelop.InchaseMain;
 
 public class BookshelfScene extends JPanel {
     private InchaseMain main;
-
-    // 이미지들
     private ImageIcon bookshelfCloseup;
     private ImageIcon bookshelfBoxOpen;
     private ImageIcon bookshelfBoxOpenWhiteGet;
     private ImageIcon bookshelfPaperCloseup;
-
     private JLabel bg;
     private String currentState;
 
-    // 퍼즐 관련 필드
     private JTextField[] numberFields = new JTextField[4];
     private int currentIndex = 0;
     private boolean puzzleSolved = false;
 
-    // ✨ [추가] 키패드 버튼 필드 선언
+    // 키패드 버튼 선언
     private JButton[] numButtons = new JButton[9];
     private JButton nextBtn;
     private JButton resetBtn;
-    private JButton backBtn; // 뒤로가기 버튼도 필드로 선언하여 필요시 제어 가능하게 함
+    private JButton backBtn; 
 
     public BookshelfScene(InchaseMain main) {
         this.main = main;
@@ -46,7 +42,7 @@ public class BookshelfScene extends JPanel {
 
         currentState = "closeup";
 
-        // 🔹 뒤로가기 버튼 초기화 및 추가
+        // 뒤로가기 버튼 초기화 및 추가
         backBtn = new JButton("뒤로가기");
         backBtn.setBounds(1740, 50, 150, 80);
         backBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -55,7 +51,7 @@ public class BookshelfScene extends JPanel {
         backBtn.addActionListener(e -> main.goBack());
         bg.add(backBtn);
 
-        // 🔹 클릭 감지
+        // 클릭 감지
         bg.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -63,11 +59,11 @@ public class BookshelfScene extends JPanel {
             }
         });
 
-        // 🔹 퍼즐 UI 추가
+        // 퍼즐 UI 추가
         setupKeypad();
     }
 
-    // ================= 퍼즐 UI =================
+    //  퍼즐 UI 
     private void setupKeypad() {
         int xStart = 1495;
         int yStart = 340;
@@ -89,7 +85,7 @@ public class BookshelfScene extends JPanel {
             int num = i + 1;
             int row = i / 3, col = i % 3;
 
-            // ✨ [수정] 버튼을 필드 배열에 저장
+            // 버튼을 필드 배열에 저장
             numButtons[i] = new JButton(String.valueOf(num));
             numButtons[i].setBounds(startX + (size + gap) * col, startY + (size + gap) * row, size, size);
             numButtons[i].setFont(new Font("맑은 고딕", Font.BOLD, 25));
@@ -140,7 +136,7 @@ public class BookshelfScene extends JPanel {
             puzzleSolved = true;
             JOptionPane.showMessageDialog(this, "잠금 해제됨!");
             
-            // ✨ [수정] 잠금 해제 시 키패드 컴포넌트 숨기기
+            // 잠금 해제 시 키패드 숨기기
             for (JTextField field : numberFields) {
                 field.setVisible(false);
             }
@@ -152,9 +148,9 @@ public class BookshelfScene extends JPanel {
         }
     }
 
-    // ================= 클릭 이벤트 =================
+    // 클릭 
     private void handleClick(int x, int y) {
-        // 🟩 책장 클로즈업 상태
+        // 책장 클로즈업 상태
         if (currentState.equals("closeup")) {
             // 상자 클릭
             if (x >= 800 && x <= 1150 && y >= 841 && y <= 950) {
@@ -178,7 +174,7 @@ public class BookshelfScene extends JPanel {
             }
         }
 
-        // 🟦 상자 열림
+        // 상자 열림
         else if (currentState.equals("boxopen")) {
             if (x >= 850 && x <= 1000 && y >= 800 && y <= 920) {
                 main.setHasWhitePotion(true);
@@ -187,13 +183,13 @@ public class BookshelfScene extends JPanel {
             }
         }
 
-        // 🟧 종이 보기 → 클릭 시 돌아감
         else if (currentState.equals("paper")) {
             bg.setIcon(bookshelfCloseup);
             currentState = "closeup";
             
-            // 🐛 이전 문제 해결을 위해 repaint 호출
+
             bg.repaint(); 
         }
     }
+
 }
