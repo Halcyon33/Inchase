@@ -109,21 +109,21 @@ public class BookshelfScene extends JPanel {
         resetBtn.addActionListener(e -> resetPuzzle());
         bg.add(resetBtn);
     }
-
+    // 정답 인덱스 비교
     private void addNumber(int num) {
         if (!puzzleSolved && currentIndex < 4) {
             numberFields[currentIndex].setText(String.valueOf(num));
         }
         checkAnswer();
     }
-
+    // 인덱스 값 초기화
     private void resetPuzzle() {
         for (int i = 0; i < 4; i++) {
             numberFields[i].setText("");
         }
         currentIndex = 0;
     }
-
+    // 정답 입력 시
     private void checkAnswer() {
         if (puzzleSolved) return;
         
@@ -193,3 +193,4 @@ public class BookshelfScene extends JPanel {
     }
 
 }
+
