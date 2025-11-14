@@ -8,7 +8,6 @@ import java.awt.event.*;
 public class EscapeScene extends JPanel {
     private InchaseMain main;
     private JLabel bgLabel;
-
     
     private final String[] endingImages = {
         "C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\escape_success.png",
@@ -17,9 +16,9 @@ public class EscapeScene extends JPanel {
         "C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\ending_3.png",
         "C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\ending_4.png"
     };
-
+    // 상태 값 
     private int currentIndex = 0;
-
+    // 메인 루프
     public EscapeScene(InchaseMain main) {
         this.main = main;
         setLayout(null);
@@ -35,7 +34,7 @@ public class EscapeScene extends JPanel {
         sequenceTimer.setRepeats(true);
         sequenceTimer.start();
     }
-
+    // 상태값 비교 하면서 다음 장면 불러오기
     private void showNextImage() {
         currentIndex++;
 
@@ -49,7 +48,7 @@ public class EscapeScene extends JPanel {
 
         repaint();
     }
-
+    // 게임 종료 버튼
     private void addExitButton() {
         JButton exitBtn = new JButton("게임 종료");
         exitBtn.setBounds(860, 900, 200, 60);
@@ -61,4 +60,5 @@ public class EscapeScene extends JPanel {
         bgLabel.add(exitBtn);
         repaint();
     }
+
 }
