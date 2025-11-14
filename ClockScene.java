@@ -1,4 +1,3 @@
-//버튼 디테일 수정, 상자 따는거 추가 
 
 package scenes;
 
@@ -160,3 +159,4 @@ public class ClockScene extends JPanel {
     }
 
 }
+
