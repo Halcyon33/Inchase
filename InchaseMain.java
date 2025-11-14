@@ -12,11 +12,11 @@ import java.awt.event.*;
 
 public class InchaseMain extends JFrame {
 
-    // 🔹 메인 배경
+    // 메인 배경
     private JLabel mainLabel;
     private ImageIcon mainImage;
 
-    // 🔹 아이템 상태
+    // 아이템 상태
     private boolean hasKey = false;         // 열쇠 획득 여부
     private boolean hasRedPotion = false;   // 붉은 물약 획득 여부
     private boolean hasBluePotion = false;  // 파란 물약 획득 여부
@@ -28,7 +28,7 @@ public class InchaseMain extends JFrame {
     private ClockScene clockScene;
     private EscapeScene escapeScene;
     
-    // 🔹 생성자
+    // 메인 루프
     public InchaseMain() {
         setTitle("Inchase Room");
         setSize(1920, 1080);
@@ -46,7 +46,7 @@ public class InchaseMain extends JFrame {
         setVisible(true);
     }
 
-    // 🔹 메인 장면 표시
+    // 메인 장면 표시
     public void showMainScene() {
         mainLabel.removeAll();
         mainLabel.setIcon(mainImage);
@@ -89,53 +89,54 @@ public class InchaseMain extends JFrame {
         }
     }
 
-    // 🔹 메인으로 복귀
+    // 메인으로 복귀
     public void goBack() {
         setContentPane(mainLabel);
         showMainScene();
     }
-
+    // 뒤로 가기 가기 누르면 메인 가기
     public void goMainScene() {
         setContentPane(mainLabel);
         revalidate();
         repaint();
     }
-
+    // 열쇠 얻기
     public boolean hasKey() {
         return hasKey;
     }
-
+    // 열쇠 얻은거 참 거짓
     public void setHasKey(boolean value) {
         hasKey = value;
     
     }
-
+    // 빨간 물약 얻기
     public boolean hasRedPotion() {
         return hasRedPotion;
     }
-
+    // 빨간 물약 얻은거 참 거짓
     public void setHasRedPotion(boolean value) {
         hasRedPotion = value;
       
     }
-
+    // 파란 물약 얻기
     public boolean hasBluePotion() {
         return hasBluePotion;
     }
-
+    // 파란 물약 얻은거 참 거짓
     public void setHasBluePotion(boolean value) {
         hasBluePotion = value;
        
     }
+    // 하얀 물약 얻기
     public boolean hasWhitePotion() {
         return hasWhitePotion;
     }
-
+    // 하얀 물약 얻은거 참 거짓
     public void setHasWhitePotion(boolean value) {
         hasWhitePotion = value;
        
     }
-
+    // 버튼 생성
     private JButton makeButton(int x, int y, int w, int h, ActionListener action) {
         JButton btn = new JButton();
         btn.setBounds(x, y, w, h);
@@ -151,3 +152,4 @@ public class InchaseMain extends JFrame {
     }
 
 }
+
