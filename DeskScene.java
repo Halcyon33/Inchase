@@ -23,11 +23,10 @@ public class DeskScene extends JPanel {
     private final ImageIcon drawerSolvedEmptyImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deckdrowersolveempty.png");
 
     // === 상자 관련 이미지 ===
-    private final ImageIcon boxImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxcloseup.png"); // 열쇠로 연 상자 (물약 있음)
-    private final ImageIcon paperImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxpaper.png");  // 쪽지
-    private final ImageIcon redImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxredget.png");     // 붉은 물약 획득 (물약 사라진 이미지)
-    private final ImageIcon boxLockedImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskboxlocked.png");  // 잠긴 상자
-
+    private final ImageIcon boxImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxcloseup.png"); 
+    private final ImageIcon paperImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxpaper.png");  
+    private final ImageIcon redImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxredget.png");     
+    private final ImageIcon boxLockedImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskboxlocked.png");  
     // === 서랍 색상 조합 이미지 ===
     private final ImageIcon drawerR = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_R.png");
     private final ImageIcon drawerG = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_G.png");
@@ -61,6 +60,7 @@ public class DeskScene extends JPanel {
     private final ImageIcon whiteDrinkImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\whitedrink.png");
     private final ImageIcon deskCombineImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskcombine.png");
 
+    // 메인 루프
     public DeskScene(InchaseMain main) {
         this.main = main;
         setLayout(null);
@@ -69,7 +69,7 @@ public class DeskScene extends JPanel {
         bgLabel.setBounds(0, 0, 1920, 1080);
         bgLabel.setLayout(null);
         add(bgLabel);
-
+        // 뒤로가기 버튼
         this.backBtn = new JButton("뒤로가기");
         this.backBtn.setBounds(1740, 50, 150, 80);
         this.backBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -77,7 +77,7 @@ public class DeskScene extends JPanel {
         this.backBtn.setBackground(new Color(50, 50, 50, 200));
         this.backBtn.addActionListener(e -> main.goBack());
         bgLabel.add(this.backBtn);
-
+        // 초기화 버튼
         resetButton = new JButton("초기화");
         resetButton.setBounds(845, 467, 150, 70);
         resetButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -100,7 +100,7 @@ public class DeskScene extends JPanel {
                 
                 if (isCombining || inSmellStage) return; 
                 int x = e.getX(), y = e.getY();
-
+                // 상자 버튼 위치 값
                 switch (currentState) {
                     case "desk" -> handleDeskClick(x, y);
                     case "box" -> handleBoxClick(x, y);
@@ -238,7 +238,7 @@ public class DeskScene extends JPanel {
         boolean green = (x > 751 && x < 790 && y > 450 && y < 500);
         boolean blue = (x > 685 && x < 741 && y > 505 && y < 550);
         boolean yellow = (x > 751 && x < 790 && y > 505 && y < 550);
-
+        // 퍼즐 조합 조건
         if (currentState.equals("drawer")) {
             if (red) { bgLabel.setIcon(drawerR); currentState = "drawer_R"; }
             else if (green) { bgLabel.setIcon(drawerG); currentState = "drawer_G"; }
@@ -283,7 +283,7 @@ public class DeskScene extends JPanel {
             resetButton.setVisible(false);
         }
     }
-
+    // 퍼즐 초기화
     private void resetPuzzle() {
         if (!isDrawerPuzzleSolved) {
             bgLabel.setIcon(drawerImage);
@@ -291,7 +291,7 @@ public class DeskScene extends JPanel {
         }
     }
 
-    // === 물약 합성 관련 ===
+    // 물약 합성 관련 컷씬
     private void startCombineSequence() {
         if (isCombining) return;
         isCombining = true;
@@ -328,13 +328,13 @@ public class DeskScene extends JPanel {
         });
         repaint();
     }
-
+    // 보라물약 마시는 장면 (클릭으로 장면 변환)
     private void showPurpleDrink() {
         bgLabel.removeAll();
         bgLabel.setIcon(purpleDrinkImage);
         addNextClick(this::showSmell);
     }
-
+    // 실명한 장면 (버튼 눌러서 하얀 물약마시기)
     private void showSmell() {
         bgLabel.removeAll();
         bgLabel.setIcon(smellImage);
@@ -350,7 +350,7 @@ public class DeskScene extends JPanel {
 
         repaint();
     }
-
+    // 히얀 물약 마시고 돌아오는 컷씬
     private void showWhiteDrink() {
         inSmellStage = false;
         bgLabel.removeAll();
@@ -368,13 +368,13 @@ public class DeskScene extends JPanel {
         t.setRepeats(false);
         t.start();
     }
-
+    // 다음장면 불러 오는 버튼
     private void addNextClick(Runnable nextAction) {
         JButton btn = makeInvisibleButton(0, 0, 1920, 1080);
         btn.addActionListener(e -> nextAction.run());
         bgLabel.add(btn);
     }
-
+    // 버튼 투명화 
     private JButton makeInvisibleButton(int x, int y, int w, int h) {
         JButton btn = new JButton();
         btn.setBounds(x, y, w, h);
@@ -385,3 +385,4 @@ public class DeskScene extends JPanel {
     }
 
 }
+
