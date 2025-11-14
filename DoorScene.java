@@ -11,8 +11,8 @@ public class DoorScene extends JPanel {
     private ImageIcon doorImage;
     private JLabel displayLabel;
     private StringBuilder code = new StringBuilder();
-    private final String correctCode = "4278";
-
+    private final String correctCode = "4278"; // 비번 답 
+    //메인 루프
     public DoorScene(InchaseMain main) {
         this.main = main;
         setLayout(null);
@@ -31,7 +31,7 @@ public class DoorScene extends JPanel {
         displayLabel.setBounds(950, 650, 200, 60);
         bg.add(displayLabel);
 
-        
+        // 키패드 안보이게 설정
         int startX = 780, startY = 210, size = 95, gap = 8;
         for (int i = 0; i < 9; i++) {
             int num = i + 1;
@@ -47,7 +47,7 @@ public class DoorScene extends JPanel {
             bg.add(numBtn);
         }
 
-        
+        // 초기화
         JButton clearBtn = new JButton("초기화");
         clearBtn.setBounds(1050, 665, 120, 45);
         clearBtn.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -56,7 +56,7 @@ public class DoorScene extends JPanel {
         clearBtn.addActionListener(e -> clearInput());
         bg.add(clearBtn);
 
-        
+        // 뒤로가기 버튼
         JButton backBtn = new JButton("뒤로가기");
         backBtn.setBounds(1740, 50, 150, 80);
         backBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -65,7 +65,7 @@ public class DoorScene extends JPanel {
         backBtn.addActionListener(e -> main.goBack());
         bg.add(backBtn);
     }
-
+    // 버튼 투명화
     private JButton makeInvisibleButton(int x, int y, int w, int h, String text) {
         JButton btn = new JButton(text);
         btn.setBounds(x, y, w, h);
@@ -75,7 +75,7 @@ public class DoorScene extends JPanel {
         btn.setBorderPainted(false);
         return btn;
     }
-
+    // 값 입력
     private void appendNumber(int num) {
         if (code.length() < 4) {
             code.append(num);
@@ -92,11 +92,12 @@ public class DoorScene extends JPanel {
             }
         }
     }
-
+    // 값 초기화
     private void clearInput() {
         code.setLength(0);
         displayLabel.setText("");
     }
 }
+
 
 
