@@ -45,7 +45,7 @@ public class ClockScene extends JPanel {
         inputLabel.setForeground(Color.BLACK);
         bg.add(inputLabel);
 
-        // 숫자 버튼 (0~9)
+        // 숫자 버튼 (1~9)
         int startX = 850, startY = 410, size = 55, gap = 8;
         for (int i = 0; i < 9; i++) {
             int num = i + 1;
@@ -159,4 +159,5 @@ public class ClockScene extends JPanel {
     }
 
 }
+
 
