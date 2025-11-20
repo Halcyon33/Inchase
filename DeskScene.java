@@ -16,18 +16,18 @@ public class DeskScene extends JPanel {
     private boolean isPotionCombined = false;
     private boolean inSmellStage = false;
 
-    // === 이미지 로드 ===
+    //이미지 로드
     private final ImageIcon deskImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskcloseup.png");
     private final ImageIcon drawerImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser.png");
     private final ImageIcon drawerSolvedImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deckdrowersolve.png");
     private final ImageIcon drawerSolvedEmptyImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deckdrowersolveempty.png");
 
-    // === 상자 관련 이미지 ===
+    //상자 관련 이미지 
     private final ImageIcon boxImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxcloseup.png"); 
     private final ImageIcon paperImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxpaper.png");  
     private final ImageIcon redImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\desktopboxredget.png");     
     private final ImageIcon boxLockedImage = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskboxlocked.png");  
-    // === 서랍 색상 조합 이미지 ===
+    //서랍 색상 조합 이미지 
     private final ImageIcon drawerR = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_R.png");
     private final ImageIcon drawerG = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_G.png");
     private final ImageIcon drawerB = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_B.png");
@@ -49,7 +49,7 @@ public class DeskScene extends JPanel {
     private final ImageIcon drawerYB = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_YB.png");
     private final ImageIcon drawerYG = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskdrowser_YG.png");
 
-    // === 물약 합성 관련 이미지 ===
+    //물약 합성 관련 이미지
     private final ImageIcon deskPurpleWhite = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskpurplewhite.png");
     private final ImageIcon deskSelect = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskselect.png");
     private final ImageIcon deskWhite = new ImageIcon("C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\deskwhite.png");
@@ -385,5 +385,6 @@ public class DeskScene extends JPanel {
     }
 
 }
+
 
 
