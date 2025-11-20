@@ -246,7 +246,7 @@ public class DeskScene extends JPanel {
             else if (yellow) { bgLabel.setIcon(drawerY); currentState = "drawer_Y"; }
             return;
         }
-
+        // 입력별로 받는 모든 경우의 수
         switch (currentState) {
             case "drawer_R" -> {
                 if (blue) { bgLabel.setIcon(drawerRB); currentState = "drawer_RB"; }
@@ -274,7 +274,7 @@ public class DeskScene extends JPanel {
             }
         }
 
-        // 퍼즐 정답 (R → B)
+        // 퍼즐 정답 (RB)
         if (currentState.equals("drawer_RB")) {
             bgLabel.setIcon(drawerSolvedImage);
             currentState = "drawer_solved";
@@ -299,14 +299,14 @@ public class DeskScene extends JPanel {
         bgLabel.removeAll(); 
         resetButton.setVisible(false);
         bgLabel.setIcon(deskPurpleWhite);
-
+    
         addNextClick(() -> {
             bgLabel.removeAll();
             bgLabel.setIcon(deskSelect);
             addNextClick(() -> {
                 bgLabel.removeAll();
                 bgLabel.setIcon(deskWhite);
-
+                // 타이머 호춣해서 1.5초 마다 해당 장면 불러오기
                 Timer t1 = new Timer(1500, e -> {
                     bgLabel.setIcon(blind1Image);
                     repaint();
@@ -385,4 +385,5 @@ public class DeskScene extends JPanel {
     }
 
 }
+
 
