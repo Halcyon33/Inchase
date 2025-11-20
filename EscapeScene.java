@@ -39,10 +39,8 @@ public class EscapeScene extends JPanel {
         currentIndex++;
 
         if (currentIndex < endingImages.length) {
-            
             bgLabel.setIcon(new ImageIcon(endingImages[currentIndex]));
-        } else {
-            
+        } else {            
             addExitButton();
         }
 
@@ -62,3 +60,4 @@ public class EscapeScene extends JPanel {
     }
 
 }
+
