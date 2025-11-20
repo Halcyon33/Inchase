@@ -146,10 +146,11 @@ public class InchaseMain extends JFrame {
         btn.addActionListener(action);
         return btn;
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(InchaseMain::new);
     }
 
 }
+
 
