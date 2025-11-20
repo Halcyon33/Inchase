@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class EscapeScene extends JPanel {
     private InchaseMain main;
     private JLabel bgLabel;
-    
+    //이미지
     private final String[] endingImages = {
         "C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\escape_success.png",
         "C:\\Users\\suyou\\eclipse-workspace\\javadevelop\\src\\javagui\\ending_1.png",
@@ -60,4 +60,5 @@ public class EscapeScene extends JPanel {
     }
 
 }
+
 
